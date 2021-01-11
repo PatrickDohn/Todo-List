@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using todo_list.Services;
 
 namespace todo_list
 {
@@ -28,11 +29,13 @@ namespace todo_list
             {
                 configuration.RootPath = "ClientApp/build";
             });
+            services.AddSingleton<TodoService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors("ReactPolicy");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -49,7 +52,7 @@ namespace todo_list
             app.UseSpaStaticFiles();
 
             app.UseRouting();
-
+            app.UseCors("ReactPolicy");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
