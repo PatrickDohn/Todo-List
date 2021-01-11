@@ -7,7 +7,7 @@ const TODOS_API_URL = 'https://localhost:5001/api/todo';
 
 export class Home extends Component {
   state = {
-    todos: []
+    items: []
   }
   componentDidMount() {
     this.getItens();
@@ -15,20 +15,20 @@ export class Home extends Component {
   getItens = () => {
     fetch(TODOS_API_URL)
       .then(res => res.json())
-      .then(res => this.setState({ todos: res }))
+      .then(res => this.setState({ items: res }))
       .catch(err => console.log(err));
   }
   addTodoToState = todo => {
     this.setState(previous => ({
-      todos: [...previous.todos, todo]
+      items: [...previous.items, todo]
     }));
   }
   updateState = (id) => {
     this.getItens();
   }
   deleteTodoFromState = id => {
-    const updated = this.state.todos.filter(todo => todo.id !== id);
-    this.setState({ todos: updated })
+    const updated = this.state.items.filter(item => item.id !== id);
+    this.setState({ items: updated })
   }
   render() {
     return <Container style={{ paddingTop: "100px" }}>
@@ -40,7 +40,7 @@ export class Home extends Component {
       <Row>
         <Col>
           <TodoTable
-            todos={this.state.todos}
+            items={this.state.items}
             updateState={this.updateState}
             deleteTodoFromState={this.deleteTodoFromState} />
         </Col>

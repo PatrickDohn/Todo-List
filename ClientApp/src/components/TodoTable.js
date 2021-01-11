@@ -20,7 +20,7 @@ class TodoTable extends Component {
     }
   }
   render() {
-    const todos = this.props.todos;
+    const items = this.props.items;
     return <Table striped>
        <thead className="thead-dark">
         <tr>
@@ -29,11 +29,11 @@ class TodoTable extends Component {
         </tr>
       </thead>
       <tbody>
-        {!todos || todos.length <= 0 ?
+        {!items || items.length <= 0 ?
           <tr>
             <td colSpan="6" align="center"><b>No Todos yet</b></td>
           </tr>
-          : todos.map(item => (
+          : items.map(item => (
             <tr key={item.id}>
               <td>
                 {item.name}
@@ -42,10 +42,10 @@ class TodoTable extends Component {
                 <div>
                   <TodoModal
                     isNew={false}
-                    user={item}
+                    todo={item}
                     updateTodoIntoState={this.props.updateState} />
                   &nbsp;&nbsp;&nbsp;
-                  <Button color="primary" onClick={() => this.deleteTodo(item.id)}>Delete</Button>
+                  <Button color="primary" onClick={() => this.deleteTodo(item.id)}>Complete</Button>
                 </div>
               </td>
             </tr>

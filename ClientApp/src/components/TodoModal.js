@@ -35,7 +35,7 @@ class TodoModal extends Component {
                         addTodoToState={this.props.addTodoToState}
                         updateTodoIntoState={this.props.updateTodoIntoState}
                         toggle={this.toggle}
-                        user={this.props.user} />
+                        todo={this.props.todo} />
                 </ModalBody>
             </Modal>
         </Fragment>;
