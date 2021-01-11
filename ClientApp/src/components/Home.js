@@ -34,11 +34,6 @@ export class Home extends Component {
     return <Container style={{ paddingTop: "100px" }}>
       <Row>
         <Col>
-          <h3>Todo:</h3>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
           <TodoTable
             items={this.state.items}
             updateState={this.updateState}
