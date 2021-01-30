@@ -10,9 +10,9 @@ export class Home extends Component {
     items: []
   }
   componentDidMount() {
-    this.getItens();
+    this.getItems();
   }
-  getItens = () => {
+  getItems = () => {
     fetch(TODOS_API_URL)
       .then(res => res.json())
       .then(res => this.setState({ items: res }))
@@ -24,7 +24,7 @@ export class Home extends Component {
     }));
   }
   updateState = (id) => {
-    this.getItens();
+    this.getItems();
   }
   deleteTodoFromState = id => {
     const updated = this.state.items.filter(item => item.id !== id);

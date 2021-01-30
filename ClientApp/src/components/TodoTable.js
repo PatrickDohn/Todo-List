@@ -15,12 +15,14 @@ class TodoTable extends Component {
       })
         .then(res => {
           this.props.deleteTodoFromState(id);
+          console.log('this is res', this.props.items)
         })
         .catch(err => console.log(err));
     }
   }
   render() {
     const items = this.props.items;
+    console.log(items)
     return <Table striped>
        <thead className="thead-dark">
         <tr>
